@@ -1,6 +1,7 @@
 package web.dao;
 
-import jm.security.example.model.User;
+
+import web.model.User;
 
 public interface UserDao {
     User getUserByName(String name);

@@ -1,8 +1,8 @@
 package web.dao;
 
-import jm.security.example.model.Role;
-import jm.security.example.model.User;
 import org.springframework.stereotype.Repository;
+import web.model.Role;
+import web.model.User;
 
 import java.util.Collections;
 import java.util.Map;
