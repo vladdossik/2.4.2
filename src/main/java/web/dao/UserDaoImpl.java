@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUser(long id) {
+    public User getUser(int id) {
         TypedQuery<User> q = em.createQuery(
                 "SELECT u FROM User u WHERE u.id = :id",
                 User.class
@@ -43,12 +43,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(long id, User user) {
+    public void updateUser(int id, User user) {
         em.merge(user);
     }
 
     @Override
-    public void deleteUser(long id) {
+    public void deleteUser(int id) {
         em.remove(getUser(id));
     }
 }

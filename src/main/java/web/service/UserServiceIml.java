@@ -31,17 +31,17 @@ public class UserServiceIml implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getUser(long id) {
+    public User getUser(int id) {
         return userDao.getUser(id);
     }
 
     @Override
-    public void updateUser(long id, User user) {
+    public void updateUser(int id, User user) {
         userDao.updateUser(id, user);
     }
 
     @Override
-    public void deleteUser(long id) {
+    public void deleteUser(int id) {
         userDao.deleteUser(id);
     }
 
