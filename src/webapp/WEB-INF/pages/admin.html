@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,7 +8,6 @@
 <div th:each="msg : ${list}">
     <a th:href="@{/admin/{id}(id=${msg.getId()})}" th:text="${msg.getId()}"></a>
     <a th:text="${msg.getUsername()}"></a>
-    <a th:text="${msg.getPassword()}"></a>
 </div>
 <a th:href="@{/admin/createForm}">create</a>
 <a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>

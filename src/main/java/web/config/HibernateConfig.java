@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:db.properties")
@@ -39,12 +40,19 @@ public class HibernateConfig {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setGenerateDdl(true);
         jpaVendorAdapter.setShowSql(true);
-
         LocalContainerEntityManagerFactoryBean entityManagerFactory =
                 new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource);
         entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);
         entityManagerFactory.setPackagesToScan("web");
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+        jpaProperties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto")
+        );
+        jpaProperties.put("hibernate.show_sql",
+                env.getRequiredProperty("hibernate.show_sql")
+        );
+        entityManagerFactory.setJpaProperties(jpaProperties);
         entityManagerFactory.afterPropertiesSet();
         return entityManagerFactory.getObject();
     }
