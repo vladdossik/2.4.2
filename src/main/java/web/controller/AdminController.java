@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -46,7 +45,7 @@ public class AdminController {
         return "edit";
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id){
         userService.updateUser(id, user);
         return "redirect:/admin";
