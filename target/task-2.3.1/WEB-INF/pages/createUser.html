@@ -7,13 +7,13 @@
 <body>
 <form th:method="POST" th:action="@{/admin}" th:object="${user}">
 
-    <label for="name">Name</label>
-    <input name="name" th:field="*{name}" id="name"/>
+    <label for="j_username">Name</label>
+    <input name="name" th:field="*{name}" id="j_username"/>
 
     <br/>
 
-    <label for="password">Password</label>
-    <input type="password" th:field="*{password}" id="password">
+    <label for="j_password">Password</label>
+    <input type="password" th:field="*{password}" id="j_password">
 
     <br/>
 
