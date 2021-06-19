@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
     @Autowired
     private UserDetailsService ud;
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -38,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private LoginSuccessHandler loginSuccessHandler;
-
 
 
     @Override
@@ -61,14 +61,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/user").access("hasAnyRole('USER','ADMIN')")
-                .antMatchers("/admin").access("hasAnyRole('ADMIN')").anyRequest().authenticated();
+                .antMatchers("/user").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+                .antMatchers("/admin").access("hasAnyRole('ROLE_ADMIN')").anyRequest().authenticated();
     }
 
-   /*@Autowired
+    @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(ud).passwordEncoder(passwordEncoder());
-    /*/
+    }
 
     @Bean
     public JdbcUserDetailsManager users(DataSource dataSource) {
@@ -83,6 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setUserDetailsService((UserDetailsService) userService);
         return authenticationProvider;
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
