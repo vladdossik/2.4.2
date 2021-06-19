@@ -6,11 +6,11 @@
 <body>
 <h1>Login page</h1>
 
-<form th:action="@{/login.html}" method="post">
+<form th:action="@{/login}" method="post">
     <label for="username">Username</label>:
-    <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+    <input type="text" id="username" name="j_username" autofocus="autofocus" /> <br />
     <label for="password">Password</label>:
-    <input type="password" id="password" name="password" /> <br />
+    <input type="password" id="password" name="j_password" /> <br />
     <input type="submit" value="Log in" />
 </form>
 </body>
