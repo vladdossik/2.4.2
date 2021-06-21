@@ -16,8 +16,7 @@ public class RoleDaoImpl {
 
     public Role getRoleById(int id) {
         TypedQuery<Role> q = em.createQuery(
-                "SELECT u FROM Role u WHERE u.id = :id",
-                Role.class
+                "SELECT u FROM Role u WHERE u.id = :id", Role.class
         );
         q.setParameter("id", id);
         return q.getResultList().stream().findAny().orElse(null);
